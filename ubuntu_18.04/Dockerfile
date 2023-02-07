@@ -57,6 +57,9 @@ RUN apt-get install -y libavcodec-dev libavformat-dev libswscale-dev
 RUN apt-get install -y libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev
 RUN apt-get install -y libgtk-3-dev
 
+# tensorflow requires protobuf, the auto-version requires that python version >= 3.7
+RUN pip3 install protobuf==3.6.1
+RUN pip3 install tensorflow
 RUN pip3 install flask rospkg pyyaml catkin-tools
 
 RUN cd /tmp && git clone https://github.com/opencv/opencv.git && \
