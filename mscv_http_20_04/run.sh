@@ -8,4 +8,5 @@ docker run -td --privileged --net=host --ipc=host \
     -e ROS_IP=127.0.0.1 \
     --cap-add=SYS_PTRACE \
     -v /etc/group:/etc/group:ro \
+    -p 50001:50001 \
     mscv_http:20.04 bash
