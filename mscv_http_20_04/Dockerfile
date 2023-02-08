@@ -35,6 +35,8 @@ RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     catkin_make &&\
     source ~/catkin_ws/devel/setup.bash'
 
+RUN mkdir -p ~/catkin_ws/assets/images && mkdir -p ~/catkin_ws/assets/outputs
+
 RUN echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
 CMD ["bash"]
