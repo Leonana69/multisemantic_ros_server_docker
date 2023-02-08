@@ -1,1 +1,1 @@
-docker build -t mscv:0.1 .
+docker build -t mscv:18.04 .

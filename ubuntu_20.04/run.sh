@@ -1,7 +1,7 @@
-docker rm -f mscv &>/dev/null
+docker rm -f mscv_focal &>/dev/null
 # Create a new container
 docker run -td --privileged --net=host --ipc=host \
-    --name="mscv" \
+    --name="mscv_focal" \
     --gpus=all \
     -e "DISPLAY=$DISPLAY" \
     -e "QT_X11_NO_MITSHM=1" \
@@ -10,4 +10,4 @@ docker run -td --privileged --net=host --ipc=host \
     -e ROS_IP=127.0.0.1 \
     --cap-add=SYS_PTRACE \
     -v /etc/group:/etc/group:ro \
-    mscv:18.04 bash
+    mscv:20.04 bash
