@@ -7,6 +7,7 @@ RUN apt update && apt install -y --no-install-recommends \
     ros-noetic-desktop=1.5.0-1* \
     && rm -rf /var/lib/apt/lists/*
 
+RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bash_profile
     
 RUN apt update && apt install -y git \
@@ -32,6 +33,8 @@ RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     mkdir -p src/mscv_service &&\
     cd src/mscv_service &&\
     cp ~/catkin_ws/src/multisemantic_ros_server/examples/run.py ./run.py &&\
+    chmod +x run.py &&\
     cd ~/catkin_ws &&\
-    catkin_make &&\
-    source ~/catkin_ws/devel/setup.bash'
+    catkin_make'
+
+CMD ["bash"]
