@@ -35,4 +35,6 @@ RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     catkin_make &&\
     source ~/catkin_ws/devel/setup.bash'
 
+RUN echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
 CMD ["bash"]

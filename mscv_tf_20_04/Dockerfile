@@ -15,8 +15,7 @@ RUN apt update && apt install -y git \
     build-essential \
     python3-pip \
     nano \
-    wget \
-    curl
+    wget
 
 RUN pip3 install flask tensorflow
 
@@ -38,5 +37,7 @@ RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     cd ~/catkin_ws &&\
     catkin_make &&\
     source ~/catkin_ws/devel/setup.bash'
+
+RUN echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
 CMD ["bash"]
