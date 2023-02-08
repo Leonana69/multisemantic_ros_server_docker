@@ -25,6 +25,8 @@ RUN echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sour
 RUN apt update
 RUN apt install sublime-text
 
+RUN mkdir -p ~/catkin_ws/assets/images && mkdir -p ~/catkin_ws/assets/outputs
+
 RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     mkdir -p ~/catkin_ws/src &&\
     cd ~/catkin_ws/src &&\
@@ -34,8 +36,6 @@ RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     cd ~/catkin_ws &&\
     catkin_make &&\
     source ~/catkin_ws/devel/setup.bash'
-
-RUN mkdir -p ~/catkin_ws/assets/images && mkdir -p ~/catkin_ws/assets/outputs
 
 RUN echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
