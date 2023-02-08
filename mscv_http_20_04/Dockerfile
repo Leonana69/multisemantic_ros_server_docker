@@ -14,27 +14,25 @@ RUN apt update && apt install -y git \
     cmake \
     build-essential \
     python3-pip \
-    nano
+    nano \
+    wget
 
 RUN pip3 install flask
+
+# install sublime-text
+RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+RUN echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+RUN apt update
+RUN apt install sublime-text
 
 RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     mkdir -p ~/catkin_ws/src &&\
     cd ~/catkin_ws/src &&\
     git clone https://github.com/Leonana69/multisemantic_ros_server &&\
+    cp -r ./multisemantic_ros_server/examples/mscv_http_server ./mscv_http_server &&\
+    chmod +x ./mscv_http_server/src/mscv_http_server/run.py &&\
     cd ~/catkin_ws &&\
     catkin_make &&\
     source ~/catkin_ws/devel/setup.bash'
-
-RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
-    cd ~/catkin_ws/src &&\
-    catkin_create_pkg mscv_service rospy &&\
-    cd mscv_service &&\
-    mkdir -p src/mscv_service &&\
-    cd src/mscv_service &&\
-    cp ~/catkin_ws/src/multisemantic_ros_server/examples/run.py ./run.py &&\
-    chmod +x run.py &&\
-    cd ~/catkin_ws &&\
-    catkin_make'
 
 CMD ["bash"]
