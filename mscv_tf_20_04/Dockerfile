@@ -28,6 +28,8 @@ RUN apt install sublime-text
 RUN mkdir -p ~/catkin_ws/assets/models &&\
     wget -O ~/catkin_ws/assets/models/movenetv2.tflite https://tfhub.dev/google/lite-model/movenet/singlepose/thunder/3?lite-format=tflite
 
+ADD https://api.github.com/repos/Leonana69/multisemantic_ros_server/git/refs/heads/main version.json
+
 RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     mkdir -p ~/catkin_ws/src &&\
     cd ~/catkin_ws/src &&\

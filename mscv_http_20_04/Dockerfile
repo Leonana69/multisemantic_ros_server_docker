@@ -25,7 +25,7 @@ RUN echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sour
 RUN apt update
 RUN apt install sublime-text
 
-RUN mkdir -p ~/catkin_ws/assets/images && mkdir -p ~/catkin_ws/assets/outputs
+ADD https://api.github.com/repos/Leonana69/multisemantic_ros_server/git/refs/heads/main version.json
 
 RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     mkdir -p ~/catkin_ws/src &&\
