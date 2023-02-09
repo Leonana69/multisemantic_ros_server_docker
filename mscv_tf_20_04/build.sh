@@ -14,3 +14,5 @@ docker run -td --privileged --net=host --ipc=host \
     --cap-add=SYS_PTRACE \
     -v /etc/group:/etc/group:ro \
     mscv_tf:20.04 bash
+
+docker exec -it mscv_tf bash -i -c "cd ~/catkin_ws && rosrun mscv_pose_server run.py &"
