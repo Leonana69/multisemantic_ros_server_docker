@@ -1,0 +1,1 @@
+docker exec -it mscv_slam bash
