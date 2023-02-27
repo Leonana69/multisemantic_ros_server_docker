@@ -60,15 +60,14 @@ RUN apt-get install -y libboost-all-dev libssl-dev
 RUN cd ~ && mkdir Dev && cd Dev && git clone https://github.com/Leonana69/ORB_SLAM3 && \
     cd ORB_SLAM3 && bash build.sh
 
+# TODO: define custom msg, remove cv_bridge
+RUN apt-get install -y ros-noetic-cv-bridge
 
 RUN mkdir -p ~/catkin_ws/src
 
 ADD https://api.github.com/repos/Leonana69/multisemantic_ros_server/git/refs/heads/main version.json
 RUN cd ~/Dev && git clone https://github.com/Leonana69/multisemantic_ros_server && \
-    cp -r multisemantic_ros_server/examples/mscv_slam_server/ ~/catkin_ws/src/mscv_slam_server
-
-# TODO: define custom msg, remove cv_bridge
-RUN apt-get install -y ros-noetic-cv-bridge
+    cp -r multisemantic_ros_server/examples/mscv_slam_service/ ~/catkin_ws/src/mscv_slam_service
 
 RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     cd ~/catkin_ws &&\

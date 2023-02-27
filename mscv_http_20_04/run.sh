@@ -9,4 +9,5 @@ docker run -td --privileged --net=host --ipc=host \
     --cap-add=SYS_PTRACE \
     -v /etc/group:/etc/group:ro \
     -p 50001:50001 \
-    mscv_http:20.04 bash
+    mscv_http:20.04 \
+    bash -it -c "cd ~/catkin_ws && rosrun mscv_http_service run.py"

@@ -31,12 +31,13 @@ RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
     mkdir -p ~/catkin_ws/src &&\
     cd ~/catkin_ws/src &&\
     git clone https://github.com/Leonana69/multisemantic_ros_server &&\
-    cp -r ./multisemantic_ros_server/examples/mscv_http_server ./mscv_http_server &&\
-    chmod +x ./mscv_http_server/src/mscv_http_server/run.py &&\
+    cp -r ./multisemantic_ros_server/examples/mscv_http_service ./mscv_http_service &&\
+    chmod +x ./mscv_http_service/src/mscv_http_service/run.py &&\
     cd ~/catkin_ws &&\
     catkin_make &&\
     source ~/catkin_ws/devel/setup.bash'
 
 RUN echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
+WORKDIR ~/catkin_ws
 CMD ["bash"]
