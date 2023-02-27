@@ -39,5 +39,5 @@ RUN /bin/bash -c 'source /opt/ros/noetic/setup.bash &&\
 
 RUN echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
-WORKDIR ~/catkin_ws
+WORKDIR /root/catkin_ws
 CMD ["bash"]

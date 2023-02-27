@@ -16,8 +16,9 @@ docker run -td --privileged --net=host --ipc=host \
     --gpus=all \
     -e "DISPLAY=$DISPLAY" \
     -e "QT_X11_NO_MITSHM=1" \
-    -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -e "XAUTHORITY=$XAUTH" \
     --cap-add=SYS_PTRACE \
     -v /etc/group:/etc/group:ro \
-    mscv_slam:20.04 bash
+    mscv_slam:20.04 \
+    bash
