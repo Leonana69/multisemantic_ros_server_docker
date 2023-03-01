@@ -21,4 +21,4 @@ docker run -td --privileged --net=host --ipc=host \
     --cap-add=SYS_PTRACE \
     -v /etc/group:/etc/group:ro \
     mscv_slam:20.04 \
-    bash
+    bash -it -c "cd ~/catkin_ws && roslaunch mscv_slam_service run.launch"
